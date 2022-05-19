@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './Input.css';
 
 class Input extends Component {
   render() {
-    /* posso tentar fazer um map para colocar as moedas aqui nas options
-    posso pegar as informações do store e colocar aqui tbm
-    */
+    const { eachCoin } = this.props;
     return (
       <form>
-        <label htmlFor="input-value">
+        <label htmlFor="value-input">
           Valor
           <input
           // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number
-            className="input-value"
+            className="value-input"
             placeholder="0,01"
-            id="input-value"
+            id="value-input"
             type="number"
             step="0.01"
             inputMode="numeric"
@@ -22,39 +22,52 @@ class Input extends Component {
             required
           />
         </label>
-        <label htmlFor="input-expense">
+        <label htmlFor="description-input">
           Descrição da Despesa
           <input
             type="text"
-            id="input-expense"
-            name="input-expense"
+            id="description-input"
+            name="description-input"
             placeholder="Descreva a Despesa"
             data-testid="description-input"
           />
         </label>
 
-        <label htmlFor="Moeda">
-          Selecionar a Moeda
-          {/* <select /> */}
-        </label>
-
-        <label htmlFor="input-payment">
-          Forma de pagamento
+        <label htmlFor="moeda">
+          Moeda
           <select
-            id="input-payment"
-            data-testid="method-input"
+            id="moeda"
           >
-            <option value="dinheiro">Dinheiro</option>
-            <option value="cartão de crédito" selected>Cartão de Crédito</option>
-            <option value="cartão de débito">Cartão de Débito</option>
+            {
+              // pego do meu store as informações das moedas e faço o map
+              eachCoin.map((coin, index) => (
+                <option
+                  key={ index }
+                >
+                  {coin}
+                </option>
+              ))
+            }
           </select>
         </label>
 
-        <label htmlFor="input-category-expense">
+        <label htmlFor="method-input">
+          Forma de pagamento
+          <select
+            id="method-input"
+            data-testid="method-input"
+          >
+            <option value="dinheiro">Dinheiro</option>
+            <option value="cartão de crédito" selected>Cartão de crédito</option>
+            <option value="cartão de débito">Cartão de débito</option>
+          </select>
+        </label>
+
+        <label htmlFor="tag-input">
           Escolha a categoria
           <select
-            name="input-category-expense"
-            id="input-category-expense"
+            name="tag-input"
+            id="tag-input"
             data-testid="tag-input"
           >
             <option>Alimentação</option>
@@ -65,9 +78,16 @@ class Input extends Component {
           </select>
         </label>
       </form>
-
     );
   }
 }
 
-export default Input;
+const mapStateToProps = (state) => ({
+  eachCoin: state.wallet.currencies,
+});
+
+Input.propTypes = {
+  eachCoin: PropTypes.string.isRequired,
+};
+
+export default connect(mapStateToProps)(Input);

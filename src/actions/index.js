@@ -25,6 +25,7 @@ export function fetchCoinsThunk() {
       code.splice(1, 1);
       // faco um map para rodar todos os elementos de indice 1 do array para entrar nos detalhes e conseguir pegar o code.
       const codeCoin = code.map((element) => (element[1].code));
+      // const codeCoin = code.map((element) => (element[1]));
       dispatch(setCurrencies(codeCoin));
     } catch (error) {
       console.log('Deu erro');
