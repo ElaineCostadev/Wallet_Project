@@ -31,4 +31,4 @@ export function fetchCoinsThunk() {
       console.log('Deu erro');
     }
   };
-};
+}
