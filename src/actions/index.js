@@ -1,5 +1,6 @@
 export const SAVE_EMAIL = 'SAVE_EMAIL';
 export const SET_CURRENCIES = 'SET_CURRENCIES';
+export const SAVE_EXPENSES = 'SAVE_EXPENSES';
 
 export const saveEmail = (email) => ({
   type: SAVE_EMAIL,
@@ -28,7 +29,28 @@ export function fetchCoinsThunk() {
       // const codeCoin = code.map((element) => (element[1]));
       dispatch(setCurrencies(codeCoin));
     } catch (error) {
-      console.log('Deu erro');
+      console.log('Deu erro no fetchCoinsThunk');
+    }
+  };
+}
+
+export const setExpenses = (expenses) => ({
+  type: SAVE_EXPENSES,
+  payload: expenses,
+});
+
+export function fetchExpensesThunk(coin) {
+  return async (dispatch) => {
+    try {
+      const url = `https://economia.awesomeapi.com.br/json/${coin}`;
+      const response = await fetch(url);
+      const result = await response.json();
+      // const allInfoCoin =
+      console.log('fetchExpensesThunk', result);
+      const storeInfoCoin = result.map((eachInfo) => (eachInfo));
+      dispatch(setExpenses(storeInfoCoin));
+    } catch (error) {
+      console.log('Deu erro no fetchExpensesThunk');
     }
   };
 }
