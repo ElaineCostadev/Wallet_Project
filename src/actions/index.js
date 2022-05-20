@@ -1,6 +1,7 @@
 export const SAVE_EMAIL = 'SAVE_EMAIL';
 export const SET_CURRENCIES = 'SET_CURRENCIES';
 export const SAVE_EXPENSES = 'SAVE_EXPENSES';
+export const SET_FORM = 'SET_FORM';
 
 export const saveEmail = (email) => ({
   type: SAVE_EMAIL,
@@ -34,21 +35,18 @@ export function fetchCoinsThunk() {
   };
 }
 
-export const setExpenses = (expenses) => ({
-  type: SAVE_EXPENSES,
+export const setForm = (expenses) => ({
+  type: SET_FORM,
   payload: expenses,
 });
 
-export function fetchExpensesThunk(coin) {
+export function fetchExpensesThunk(expenses) {
   return async (dispatch) => {
     try {
-      const url = `https://economia.awesomeapi.com.br/json/${coin}`;
+      const url = 'https://economia.awesomeapi.com.br/json/all';
       const response = await fetch(url);
       const result = await response.json();
-      // const allInfoCoin =
-      console.log('fetchExpensesThunk', result);
-      const storeInfoCoin = result.map((eachInfo) => (eachInfo));
-      dispatch(setExpenses(storeInfoCoin));
+      dispatch(setForm({ ...expenses, exchangeRates: result }));
     } catch (error) {
       console.log('Deu erro no fetchExpensesThunk');
     }

@@ -9,18 +9,11 @@ class Input extends Component {
     super();
     this.state = {
       id: 0,
-      value: '1',
+      value: '',
       description: '',
-      currency: '',
+      currency: 'USD',
       method: 'dinheiro',
       tag: 'Alimentação',
-      exchangeRates: {
-        USD: {
-          code: '',
-          name: '',
-          ask: '',
-        },
-      },
     };
   }
 
@@ -30,11 +23,12 @@ class Input extends Component {
 
   onSubmitExpenses = (event) => {
     event.preventDefault();
-    const { dispatchForm } = this.props;
-    console.log('dispatchForm', dispatchForm);
-    const { currency } = this.state;
-
-    dispatchForm(currency);
+    const { dispatchValue } = this.props;
+    dispatchValue(this.state);
+    this.setState((prevState) => ({
+      id: prevState.id + 1,
+      value: '',
+    }));
   }
 
   render() {
@@ -103,9 +97,9 @@ class Input extends Component {
             data-testid="method-input"
             onChange={ this.onChangeExpense }
           >
-            <option value="dinheiro">Dinheiro</option>
-            <option value="cartão de crédito">Cartão de crédito</option>
-            <option value="cartão de débito">Cartão de débito</option>
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Cartão de crédito">Cartão de crédito</option>
+            <option value="Cartão de débito">Cartão de débito</option>
           </select>
         </label>
 
@@ -142,12 +136,13 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchForm: (coin) => dispatch(fetchExpensesThunk(coin)),
+  dispatchValue: (expense) => dispatch(fetchExpensesThunk(expense)),
 });
 
 Input.propTypes = {
   // https://pt-br.reactjs.org/docs/typechecking-with-proptypes.html
   eachCoin: PropTypes.arrayOf(PropTypes.string).isRequired,
+  dispatchValue: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Input);
