@@ -73,7 +73,8 @@ class Wallet extends React.Component {
                   <ButtonTable
                     nameButton="Excluir"
                     dataTest="delete-btn"
-                    eachLine={ eachLine } />
+                    eachLine={ eachLine }
+                  />
                 </td>
               </tr>
             ))}
