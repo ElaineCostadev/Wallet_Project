@@ -2,6 +2,7 @@ export const SAVE_EMAIL = 'SAVE_EMAIL';
 export const SET_CURRENCIES = 'SET_CURRENCIES';
 export const SAVE_EXPENSES = 'SAVE_EXPENSES';
 export const SET_FORM = 'SET_FORM';
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 
 export const saveEmail = (email) => ({
   type: SAVE_EMAIL,
@@ -52,3 +53,8 @@ export function fetchExpensesThunk(expenses) {
     }
   };
 }
+
+export const removeExpense = (expense) => ({
+  type: REMOVE_EXPENSE,
+  payload: expense,
+});

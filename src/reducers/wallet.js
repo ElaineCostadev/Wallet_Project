@@ -1,4 +1,4 @@
-import { SET_CURRENCIES, SET_FORM } from '../actions';
+import { SET_CURRENCIES, SET_FORM, REMOVE_EXPENSE } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -17,6 +17,9 @@ function walletReducer(state = INITIAL_STATE, action) {
       // Mentoria ajuda do Pessini
       expenses: [...state.expenses, action.payload],
     };
+  case REMOVE_EXPENSE:
+    return { ...state,
+      expenses: state.expenses.filter((expense) => expense.id !== action.payload) };
   default:
     return state;
   }

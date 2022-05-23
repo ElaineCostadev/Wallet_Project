@@ -51,7 +51,7 @@ class Wallet extends React.Component {
           <tboyd>
 
             {expensesWallet.map((eachLine) => (
-              <div
+              <tr
                 key={ eachLine.id }
               >
                 <td>{eachLine.description}</td>
@@ -69,9 +69,13 @@ class Wallet extends React.Component {
                     .toFixed(2)}
                 </td>
                 <td>Real</td>
-                <ButtonTable nameButton="Excluir" dataTest="delete-btn" />
-                <ButtonTable nameButton="Editar" dataTest="edit-btn" />
-              </div>
+                <td>
+                  <ButtonTable
+                    nameButton="Excluir"
+                    dataTest="delete-btn"
+                    eachLine={ eachLine } />
+                </td>
+              </tr>
             ))}
 
           </tboyd>
@@ -80,6 +84,7 @@ class Wallet extends React.Component {
     );
   }
 }
+// <ButtonTable nameButton="Editar despesa" dataTest="edit-btn" />
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCoins: () => dispatch(fetchCoinsThunk()),
