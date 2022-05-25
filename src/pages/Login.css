@@ -7,7 +7,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 3cm 3cm 13cm;
+  margin: 3cm 3cm 19cm 15cm;
   text-transform: uppercase;
 }
 
@@ -17,7 +17,6 @@
   border-bottom: 3px solid black;
   border-radius: 10px;
   margin: 10px 15px 10px 10px;
-  margin-bottom: 30px;
   padding: 10px;
 }
 
@@ -32,7 +31,7 @@
   border-radius: 100px;
   color: black;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
   margin-left: 10px;
   padding: 10px;
   text-align: center;
@@ -44,8 +43,8 @@
   border: none;
   border-bottom: 3px solid black;
   border-radius: 100px;
-  color: rgba(0, 0, 0, 0.271);
-  font-weight: bold;
+  color: rgba(0, 0, 0, 0.358);
+  font-weight: 600;
   margin-left: 10px;
   padding: 10px;
   text-align: center;
