@@ -7,8 +7,8 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 3cm 0cm 3cm 13cm;
-  text-transform: uppercase;  
+  margin: 3cm 3cm 13cm;
+  text-transform: uppercase;
 }
 
 .login input {
@@ -25,27 +25,27 @@
   color: rgba(255, 255, 255, 0.871);
 }
 
-.login button:disabled {
-  background: #fff;
+.login button {
+  background: #f5e51d;
   border: none;
   border-bottom: 3px solid black;
   border-radius: 100px;
-  color: rgba(0, 0, 0, 0.271);
-  font-weight: bolder;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
   margin-left: 10px;
   padding: 10px;
   text-align: center;
   text-transform: uppercase;
 }
 
-.login button {
-  background: #F5E51D;
-  color: black;
-  border-radius: 100px;
+.login button:disabled {
+  background: white;
   border: none;
   border-bottom: 3px solid black;
-  cursor: pointer;
-  font-weight: bolder;
+  border-radius: 100px;
+  color: rgba(0, 0, 0, 0.271);
+  font-weight: bold;
   margin-left: 10px;
   padding: 10px;
   text-align: center;

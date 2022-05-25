@@ -2,10 +2,10 @@
   align-items: center;
   background-color: rgba(7, 43, 5, 0.329);
   display: flex;
-  font-family:'Times New Roman', Times, serif;
+  font-family: Times New Roman, Times, serif;
   font-size: 20px;
-  justify-content: space-between;
   height: 50px;
+  justify-content: space-between;
   padding-left: 2%;
   width: 99%;
 }
@@ -15,7 +15,7 @@
   margin-left: 70%;
 }
 
-.Header p:nth-child(3) {
+.Header p:nth-child( 3 ) {
   margin-right: 3%;
 }
 

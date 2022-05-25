@@ -4,15 +4,14 @@
   border-collapse: collapse;
   border-radius: 5px;
   font-size: 16px;
-  font-weight: normal;
   max-width: 100%;
-  width: 100%;
   white-space: nowrap;
+  width: 100%;
 }
 
-.fl-table td, .fl-table th {
-  text-align: center;
+.fl-table td , .fl-table th {
   padding: 8px;
+  text-align: center;
 }
 
 .fl-table td {
@@ -23,17 +22,17 @@
 
 .fl-table thead th {
   background: #046b4cb6;
-  color: #ffffff;
+  color: white;
 }
 
 
-.fl-table thead th:nth-child(odd) {
+.fl-table thead th:nth-child( odd ) {
   background: rgba(5, 60, 5, 0.67);
-  color: #ffffff;
+  color: white;
 }
 
-.fl-table tr:nth-child(even) {
-  background: #F8F8F8;
+.fl-table tr:nth-child( even ) {
+  background: #f8f8f8;
 }
 
 .fl-table button {
@@ -48,7 +47,7 @@
   text-transform: uppercase;
 }
 
-.fl-table button:nth-child(1) {
+.fl-table button:nth-child( 1 ) {
   background: #12851fc0;
   border: none;
   border-bottom: 2px solid black;
@@ -56,6 +55,6 @@
   cursor: pointer;
   margin-left: 10px;
   padding: 6px;
-  text-transform: uppercase;
   text-align: center;
+  text-transform: uppercase;
 }
