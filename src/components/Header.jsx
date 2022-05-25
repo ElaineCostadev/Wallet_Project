@@ -25,6 +25,7 @@ class Header extends Component {
 
     return (
       <header className="Header">
+        TrybeWallet
         <h5
           data-testid="email-field"
         >
@@ -55,7 +56,7 @@ const mapStateToProps = (state) => ({
 
 Header.propTypes = {
   emailUser: PropTypes.string.isRequired,
-  askTotal: PropTypes.arrayOf.isRequired,
+  askTotal: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
 
 export default connect(mapStateToProps)(Header);

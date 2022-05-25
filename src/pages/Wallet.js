@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import { fetchCoinsThunk } from '../actions';
 import Input from '../components/Input';
 import ButtonTable from '../components/ButtonTable';
+import './Wallet.css';
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -29,10 +30,9 @@ class Wallet extends React.Component {
     return (
       <div>
         <Header />
-        Wallet pagina principal
         <Input />
 
-        <table>
+        <table className="fl-table">
           <thead>
             <tr>
               {
@@ -48,8 +48,7 @@ class Wallet extends React.Component {
             </tr>
           </thead>
 
-          <tboyd>
-
+          <tbody>
             {expensesWallet.map((eachLine) => (
               <tr
                 key={ eachLine.id }
@@ -72,20 +71,19 @@ class Wallet extends React.Component {
                 <td>
                   <ButtonTable
                     nameButton="Excluir"
-                    dataTest="delete-btn"
                     eachLine={ eachLine }
                   />
+
                 </td>
               </tr>
             ))}
-
-          </tboyd>
+          </tbody>
         </table>
       </div>
     );
   }
 }
-// <ButtonTable nameButton="Editar despesa" dataTest="edit-btn" />
+//
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCoins: () => dispatch(fetchCoinsThunk()),
@@ -97,7 +95,7 @@ const mapStateToProps = (state) => ({
 
 Wallet.propTypes = {
   fetchCoins: PropTypes.func.isRequired,
-  expensesWallet: PropTypes.arrayOf.isRequired,
+  expensesWallet: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wallet);

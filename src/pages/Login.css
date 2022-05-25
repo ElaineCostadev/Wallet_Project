@@ -1,0 +1,53 @@
+.div-login {
+  background-image: url('../images/e-wallet2.jpg');
+  padding: 15.5%;
+}
+
+.login {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 3cm 0cm 3cm 13cm;
+  text-transform: uppercase;  
+}
+
+.login input {
+  background-color: rgba(43, 83, 9, 0.542);
+  border: none;
+  border-bottom: 3px solid black;
+  border-radius: 10px;
+  margin: 10px 15px 10px 10px;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+.login input::placeholder {
+  color: rgba(255, 255, 255, 0.871);
+}
+
+.login button:disabled {
+  background: #fff;
+  border: none;
+  border-bottom: 3px solid black;
+  border-radius: 100px;
+  color: rgba(0, 0, 0, 0.271);
+  font-weight: bolder;
+  margin-left: 10px;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.login button {
+  background: #F5E51D;
+  color: black;
+  border-radius: 100px;
+  border: none;
+  border-bottom: 3px solid black;
+  cursor: pointer;
+  font-weight: bolder;
+  margin-left: 10px;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}

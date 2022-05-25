@@ -3,6 +3,8 @@ export const SET_CURRENCIES = 'SET_CURRENCIES';
 export const SAVE_EXPENSES = 'SAVE_EXPENSES';
 export const SET_FORM = 'SET_FORM';
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+export const SEND_NEW_EXPENSE = 'SEND_NEW_EXPENSE';
 
 export const saveEmail = (email) => ({
   type: SAVE_EMAIL,
@@ -57,4 +59,14 @@ export function fetchExpensesThunk(expenses) {
 export const removeExpense = (expense) => ({
   type: REMOVE_EXPENSE,
   payload: expense,
+});
+
+export const editExpense = (edit, id) => ({
+  type: EDIT_EXPENSE,
+  payload: { edit, id },
+});
+
+export const sendNewExpenseAction = (obj) => ({
+  type: SEND_NEW_EXPENSE,
+  payload: obj,
 });

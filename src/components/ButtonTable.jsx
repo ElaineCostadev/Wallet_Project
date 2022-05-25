@@ -1,35 +1,51 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { removeExpense } from '../actions';
+import { removeExpense, editExpense } from '../actions';
 
 class ButtonTable extends Component {
   buttonTableDelete = (expense) => {
     const { remove } = this.props;
-    remove(expense.id);
+    remove(expense);
+  }
+
+  buttonTableEdit = (expense) => {
+    console.log('botao editar');
+    const { edit } = this.props;
+    edit(true, expense.id);
+  // esse botao precisa avisar que é para editar - ele muda o state expenseEdit do reducer para true?
+  // crio um novo objeto aqui ou no Input?
+  // e entao, se estiver true, uso o input para edição?
+  // dispacho o novo objeto
   }
 
   render() {
-    const { nameButton, dataTest, eachLine } = this.props;
+    const { nameButton, eachLine } = this.props;
     return (
-      <button
-        type="button"
-        onClick={ () => this.buttonTableDelete(eachLine) }
-        data-testid={ dataTest }
-      >
-        { nameButton }
-      </button>
+      <>
+        <button
+          type="button"
+          data-testid="edit-btn"
+          onClick={ () => this.buttonTableEdit(eachLine) }
+        >
+          Editar
+        </button>
+
+        <button
+          type="button"
+          onClick={ () => this.buttonTableDelete(eachLine.id) }
+          data-testid="delete-btn"
+        >
+          { nameButton }
+        </button>
+      </>
     );
   }
 }
 
-ButtonTable.propTypes = {
-  nameButton: PropTypes.string.isRequired,
-  dataTest: PropTypes.string.isRequired,
-};
-
 const mapDispatchToProps = (dispatch) => ({
   remove: (expense) => dispatch(removeExpense(expense)),
+  edit: (expense, id) => dispatch(editExpense(expense, id)),
 });
 
 const mapStateToProps = (state) => ({
@@ -38,7 +54,9 @@ const mapStateToProps = (state) => ({
 
 ButtonTable.propTypes = {
   remove: PropTypes.func.isRequired,
-  eachLine: PropTypes.shape.isRequired,
+  eachLine: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  nameButton: PropTypes.string.isRequired,
+  edit: PropTypes.shape.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonTable);

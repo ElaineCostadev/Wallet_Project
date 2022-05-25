@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchExpensesThunk } from '../actions';
+import { fetchExpensesThunk, editExpense, sendNewExpenseAction } from '../actions';
 import './Input.css';
 
 class Input extends Component {
@@ -31,11 +31,31 @@ class Input extends Component {
     }));
   }
 
-  render() {
-    const { eachCoin } = this.props;
+  buttonSendGlobalState = () => {
+    const { editState, sendNewExpense } = this.props;
     const { value, description, currency, method, tag } = this.state;
+    // queremos alterar o state global, apenas 1 item da lista que recebemos de despesas.
+    // sabemos qual o item, pelo id
+    // criando um novo objeto
+    const newExpenseEdited = {
+      id: editState.id,
+      value,
+      description,
+      currency,
+      method,
+      tag,
+    };
+    // action para alterar a despesa, exceto exchangeRates e id
+    sendNewExpense(newExpenseEdited);
+  }
+
+  render() {
+    const { eachCoin, editState } = this.props;
+    const { value, description, currency, method, tag } = this.state;
+    const result = editState ? editState.isOnEditMode : false;
+    // { editState ? 'Formulario Edicao' : 'Formulario Inlcusao'}
     return (
-      <form onSubmit={ this.onSubmitExpenses }>
+      <form className="form">
         <label htmlFor="value-input">
           Valor
           <input
@@ -74,6 +94,7 @@ class Input extends Component {
             id="moeda"
             name="currency"
             value={ currency }
+            data-testid="currency-input"
           >
             {
               // pego do meu store as informações das moedas e faço o map
@@ -120,12 +141,25 @@ class Input extends Component {
           </select>
         </label>
 
-        <button
-          type="submit"
-          name="add-expense"
-        >
-          Adicionar despesa
-        </button>
+        {
+          result ? (
+            <button
+              type="button"
+              onClick={ this.buttonSendGlobalState }
+            >
+              Editar despesa
+            </button>
+          ) : (
+            <button
+              type="button"
+              name="add-expense"
+              onClick={ this.onSubmitExpenses }
+            >
+              Adicionar despesa
+            </button>
+          )
+        }
+
       </form>
     );
   }
@@ -133,16 +167,22 @@ class Input extends Component {
 
 const mapStateToProps = (state) => ({
   eachCoin: state.wallet.currencies,
+  editState: state.wallet.expenseEdit,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchValue: (expense) => dispatch(fetchExpensesThunk(expense)),
+  edit: (expense) => dispatch(editExpense(expense)),
+  sendNewExpense: (newObj) => dispatch(sendNewExpenseAction(newObj)),
+
 });
 
 Input.propTypes = {
   // https://pt-br.reactjs.org/docs/typechecking-with-proptypes.html
   eachCoin: PropTypes.arrayOf(PropTypes.string).isRequired,
   dispatchValue: PropTypes.func.isRequired,
+  editState: PropTypes.string.isRequired,
+  sendNewExpense: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Input);

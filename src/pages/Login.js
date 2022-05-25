@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { saveEmail } from '../actions';
+import './Login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -43,8 +44,8 @@ class Login extends React.Component {
   render() {
     const { email, password, loginButtonDisabled } = this.state;
     return (
-      <div>
-        <form onSubmit={ this.onSubmit }>
+      <div className="div-login">
+        <form onSubmit={ this.onSubmit } className="login">
           <label htmlFor="email">
             Email
             <input
