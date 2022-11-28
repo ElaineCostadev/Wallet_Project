@@ -3,24 +3,16 @@
   background-color: rgba(7, 43, 5, 0.176);
   display: flex;
   font-family: Times New Roman, Times, serif;
-  font-size: 20px;
+  font-size: 1.8rem;
   height: 50px;
-  justify-content: space-between;
-  padding-left: 2%;
-  width: 99%;
 }
 
 .Header h4 {
   color: rgba(245, 94, 6, 0.784);
-  margin-left: 80%;
   font-size: 1.8rem;
-}
-
-.Header p:nth-child( 3 ) {
-  margin-right: 3%;
+  margin-left: 65%;
 }
 
 .Header h5 {
-  margin-right: 5%;
-  text-align: center;
+  margin-left: 5%;
 }
