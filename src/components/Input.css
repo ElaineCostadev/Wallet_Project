@@ -47,3 +47,11 @@
   text-align: center;
   text-transform: uppercase;
 }
+
+.form button:hover {
+  box-shadow: 0 1.5rem 1rem rgba(0, 0, 0, .2);
+}
+
+.form button:active {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+}

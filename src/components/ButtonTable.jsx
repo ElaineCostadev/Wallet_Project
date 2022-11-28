@@ -10,7 +10,7 @@ class ButtonTable extends Component {
   }
 
   buttonTableEdit = (expense) => {
-    console.log('botao editar');
+    // console.log('botao editar');
     const { edit } = this.props;
     edit(true, expense.id);
   // esse botao precisa avisar que é para editar - ele muda o state expenseEdit do reducer para true?

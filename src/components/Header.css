@@ -1,6 +1,6 @@
 .Header {
   align-items: center;
-  background-color: rgba(7, 43, 5, 0.329);
+  background-color: rgba(7, 43, 5, 0.176);
   display: flex;
   font-family: Times New Roman, Times, serif;
   font-size: 20px;
@@ -11,8 +11,9 @@
 }
 
 .Header h4 {
-  color: red;
-  margin-left: 70%;
+  color: rgba(245, 94, 6, 0.784);
+  margin-left: 80%;
+  font-size: 1.8rem;
 }
 
 .Header p:nth-child( 3 ) {
